@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="1.117" timestamp="2026-07-28T21:49:53.676930+00:00" hostname="agent-env-bb4c521a-0cf2-48cc-81be-78f5cd6f65e2"><testcase classname="tests.backend_test.TestCactusAPI" name="test_09_create_and_search_product" time="0.579"><failure message="AssertionError: assert 'pending' == 'skipped'&#10;  &#10;  - skipped&#10;  + pending">backend/tests/backend_test.py:170: in test_09_create_and_search_product
+    assert product["instagram_status"] == "skipped"
+E   AssertionError: assert 'pending' == 'skipped'
+E     
+E     - skipped
+E     + pending</failure></testcase></testsuite></testsuites>
