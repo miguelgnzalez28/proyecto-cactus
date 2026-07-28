@@ -30,6 +30,7 @@ export default function Admin() {
 
   // form state
   const [name, setName] = useState("");
+  const [code, setCode] = useState("");
   const [price, setPrice] = useState("");
   const [badge, setBadge] = useState("none");
   const [file, setFile] = useState(null);
@@ -92,6 +93,7 @@ export default function Admin() {
 
   const resetForm = () => {
     setName("");
+    setCode("");
     setPrice("");
     setBadge("none");
     setFile(null);
@@ -105,10 +107,15 @@ export default function Admin() {
     const p = parseFloat(price);
     if (isNaN(p) || p <= 0) return toast.error("Precio inválido");
     if (!file) return toast.error("Imagen requerida");
+    const trimmedCode = code.trim();
+    if (trimmedCode && !/^[A-Za-z0-9_-]{2,32}$/.test(trimmedCode)) {
+      return toast.error("Código inválido (2-32 caracteres alfanuméricos, - o _)");
+    }
 
     const form = new FormData();
     form.append("name", name.trim());
     form.append("price", String(p));
+    if (trimmedCode) form.append("code", trimmedCode);
     if (badge && badge !== "none") form.append("badge", badge);
     form.append("image", file);
 
@@ -251,6 +258,20 @@ export default function Admin() {
                 className="rounded-lg border-[#F4DBD8]"
                 required
               />
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
+                Código (opcional)
+              </label>
+              <Input
+                data-testid="product-code-input"
+                value={code}
+                onChange={(e) => setCode(e.target.value.toUpperCase())}
+                placeholder="Ej. CTS-ROSA01 (se genera uno si lo dejas vacío)"
+                maxLength={32}
+                className="rounded-lg border-[#F4DBD8] font-mono uppercase tracking-wider"
+              />
+              <p className="text-[10px] text-[#A38999]">2-32 caracteres. Letras, números, guion o guion bajo. Debe ser único.</p>
             </div>
             <div className="space-y-1.5">
               <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">

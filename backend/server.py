@@ -283,6 +283,7 @@ async def create_product(
     background: BackgroundTasks,
     name: str = Form(...),
     price: float = Form(...),
+    code: Optional[str] = Form(None),
     badge: Optional[str] = Form(None),
     image: UploadFile = File(...),
     user: str = Depends(require_admin),
@@ -307,6 +308,26 @@ async def create_product(
     else:
         badge = None
 
+    # custom code handling
+    if code:
+        code = code.strip().upper()
+        if len(code) < 2 or len(code) > 32:
+            raise HTTPException(400, "El código debe tener entre 2 y 32 caracteres")
+        if not all(c.isalnum() or c in "-_" for c in code):
+            raise HTTPException(400, "El código sólo puede tener letras, números, guion y guion bajo")
+        existing = await products_col.find_one({"code": code}, {"_id": 0, "id": 1})
+        if existing:
+            raise HTTPException(409, f"El código '{code}' ya está en uso")
+    else:
+        # auto-generate + retry a few times to guarantee uniqueness
+        for _ in range(5):
+            candidate = gen_code()
+            if not await products_col.find_one({"code": candidate}, {"_id": 0, "id": 1}):
+                code = candidate
+                break
+        if not code:
+            raise HTTPException(500, "No se pudo generar un código único")
+
     ext = ALLOWED_MIME[image.content_type]
     path = f"{APP_NAME}/products/{uuid.uuid4()}.{ext}"
     result = put_object(path, data, image.content_type)
@@ -316,7 +337,7 @@ async def create_product(
     initial_status = "pending" if (ig_ready and base_url) else "skipped"
 
     product = Product(
-        code=gen_code(),
+        code=code,
         name=name,
         price=price,
         image_path=result["path"],
