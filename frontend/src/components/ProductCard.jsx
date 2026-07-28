@@ -7,9 +7,9 @@ import { useCart } from "../context/CartContext";
 import { toast } from "sonner";
 
 const badgeStyles = {
-  nuevo: "bg-[#84A59D] text-white",
-  oferta: "bg-[#F28482] text-white",
-  agotado: "bg-[#8D99AE] text-white",
+  nuevo: "bg-[#D48A94] text-white",
+  oferta: "bg-[#E5646A] text-white",
+  agotado: "bg-[#A38999] text-white",
 };
 const badgeLabels = { nuevo: "Nuevo", oferta: "Oferta", agotado: "Agotado" };
 
@@ -38,9 +38,9 @@ export default function ProductCard({ product, index = 0 }) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.5, ease: "easeOut" }}
-      className="group flex flex-col rounded-2xl overflow-hidden bg-white hover:shadow-[0_20px_50px_-20px_rgba(61,64,91,0.25)] hover:-translate-y-1 transition-all duration-300 border border-[#F0EAE2]"
+      className="group flex flex-col rounded-2xl overflow-hidden bg-white hover:shadow-[0_20px_50px_-20px_rgba(61,64,91,0.25)] hover:-translate-y-1 transition-all duration-300 border border-[#F4DBD8]"
     >
-      <div className="relative aspect-[4/5] overflow-hidden bg-[#F7EDE2]">
+      <div className="relative aspect-[4/5] overflow-hidden bg-[#FCE4E2]">
         <img
           src={fileUrl(product.image_path)}
           alt={product.name}
@@ -59,7 +59,7 @@ export default function ProductCard({ product, index = 0 }) {
         )}
         <span
           data-testid={`product-code-${product.code}`}
-          className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] tracking-wider font-mono bg-white/85 backdrop-blur text-[#3D405B]"
+          className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] tracking-wider font-mono bg-white/85 backdrop-blur text-[#3D2A3A]"
         >
           {product.code}
         </span>
@@ -67,14 +67,14 @@ export default function ProductCard({ product, index = 0 }) {
 
       <div className="p-5 flex flex-col gap-3">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="font-serif-display text-xl sm:text-2xl text-[#3D405B] leading-tight">
+          <h3 className="font-serif-display text-xl sm:text-2xl text-[#3D2A3A] leading-tight">
             {product.name}
           </h3>
         </div>
         <div className="flex items-end justify-between gap-3">
           <span
             data-testid={`product-price-${product.code}`}
-            className="font-serif-display text-3xl sm:text-4xl font-light tracking-tight text-[#84A59D]"
+            className="font-serif-display text-3xl sm:text-4xl font-light tracking-tight text-[#D48A94]"
           >
             ${Number(product.price).toFixed(2)}
           </span>
@@ -82,7 +82,7 @@ export default function ProductCard({ product, index = 0 }) {
             data-testid={`add-to-cart-${product.code}`}
             onClick={handleAdd}
             disabled={isSoldOut}
-            className="rounded-full h-10 px-4 bg-[#3D405B] text-white hover:bg-[#2E3149] disabled:opacity-40"
+            className="rounded-full h-10 px-4 bg-[#3D2A3A] text-white hover:bg-[#2C1F2A] disabled:opacity-40"
           >
             <Plus className="w-4 h-4" />
             <span className="text-xs">Agregar</span>

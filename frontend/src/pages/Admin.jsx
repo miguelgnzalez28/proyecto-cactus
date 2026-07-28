@@ -14,10 +14,10 @@ import { toast } from "sonner";
 import { LogOut, Upload, Trash2, Instagram, Loader2, Leaf } from "lucide-react";
 
 const STATUS_LABELS = {
-  pending: { label: "Pendiente", color: "bg-[#F7EDE2] text-[#3D405B]" },
-  published: { label: "Publicado", color: "bg-[#84A59D] text-white" },
-  failed: { label: "Falló", color: "bg-[#F28482] text-white" },
-  skipped: { label: "No configurado", color: "bg-[#8D99AE] text-white" },
+  pending: { label: "Pendiente", color: "bg-[#FCE4E2] text-[#3D2A3A]" },
+  published: { label: "Publicado", color: "bg-[#D48A94] text-white" },
+  failed: { label: "Falló", color: "bg-[#E5646A] text-white" },
+  skipped: { label: "No configurado", color: "bg-[#A38999] text-white" },
 };
 
 export default function Admin() {
@@ -149,20 +149,20 @@ export default function Admin() {
 
   if (!token) {
     return (
-      <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center px-4">
-        <div className="w-full max-w-md bg-white rounded-3xl border border-[#EFE9E1] p-8 shadow-[0_20px_60px_-20px_rgba(61,64,91,0.15)]">
+      <div className="min-h-screen bg-[#FEF7F5] flex items-center justify-center px-4">
+        <div className="w-full max-w-md bg-white rounded-3xl border border-[#F4DBD8] p-8 shadow-[0_20px_60px_-20px_rgba(61,64,91,0.15)]">
           <div className="flex flex-col items-center gap-2 mb-6">
-            <div className="w-12 h-12 rounded-full bg-[#F7EDE2] flex items-center justify-center">
-              <Leaf className="w-5 h-5 text-[#84A59D]" />
+            <div className="w-12 h-12 rounded-full bg-[#FCE4E2] flex items-center justify-center">
+              <Sparkles className="w-5 h-5 text-[#D48A94]" />
             </div>
-            <h1 className="font-serif-display text-3xl text-[#3D405B]">Admin cactus</h1>
-            <p className="text-xs text-[#8D99AE] uppercase tracking-[0.2em]">
+            <h1 className="font-serif-display text-3xl text-[#3D2A3A]">Admin cactus</h1>
+            <p className="text-xs text-[#A38999] uppercase tracking-[0.2em]">
               Solo administradores
             </p>
           </div>
           <form onSubmit={login} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D]">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
                 Usuario
               </label>
               <Input
@@ -170,13 +170,13 @@ export default function Admin() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="admin"
-                className="rounded-lg border-[#EFE9E1]"
+                className="rounded-lg border-[#F4DBD8]"
                 autoComplete="username"
                 required
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D]">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
                 Contraseña
               </label>
               <Input
@@ -185,7 +185,7 @@ export default function Admin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="rounded-lg border-[#EFE9E1]"
+                className="rounded-lg border-[#F4DBD8]"
                 autoComplete="current-password"
                 required
               />
@@ -194,7 +194,7 @@ export default function Admin() {
               data-testid="admin-login-submit"
               type="submit"
               disabled={loading}
-              className="w-full h-11 rounded-full bg-[#3D405B] hover:bg-[#2E3149] text-white"
+              className="w-full h-11 rounded-full bg-[#3D2A3A] hover:bg-[#2C1F2A] text-white"
             >
               {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Entrar"}
             </Button>
@@ -205,15 +205,15 @@ export default function Admin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA]">
-      <header className="border-b border-[#EFE9E1] bg-white/80 backdrop-blur sticky top-0 z-30">
+    <div className="min-h-screen bg-[#FEF7F5]">
+      <header className="border-b border-[#F4DBD8] bg-white/80 backdrop-blur sticky top-0 z-30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div className="flex items-baseline gap-3">
-            <span className="font-serif-display text-3xl text-[#3D405B]">cactus</span>
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#84A59D]">admin</span>
+            <span className="font-serif-display text-3xl text-[#3D2A3A]">cactus</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#D48A94]">admin</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="hidden sm:flex items-center gap-1.5 text-xs text-[#8D99AE]">
+            <span className="hidden sm:flex items-center gap-1.5 text-xs text-[#A38999]">
               <Instagram className="w-3.5 h-3.5" />
               {igEnabled ? "Instagram activo" : "Instagram no configurado"}
             </span>
@@ -221,7 +221,7 @@ export default function Admin() {
               data-testid="admin-logout-button"
               variant="ghost"
               onClick={logout}
-              className="rounded-full text-[#3D405B] hover:bg-[#F7EDE2] gap-2"
+              className="rounded-full text-[#3D2A3A] hover:bg-[#FCE4E2] gap-2"
             >
               <LogOut className="w-4 h-4" /> Salir
             </Button>
@@ -233,30 +233,30 @@ export default function Admin() {
         {/* Product form */}
         <section
           data-testid="admin-product-form"
-          className="bg-white rounded-3xl border border-[#EFE9E1] p-6"
+          className="bg-white rounded-3xl border border-[#F4DBD8] p-6"
         >
-          <h2 className="font-serif-display text-2xl text-[#3D405B] mb-1">
+          <h2 className="font-serif-display text-2xl text-[#3D2A3A] mb-1">
             Nuevo producto
           </h2>
-          <p className="text-xs text-[#8D99AE] mb-5">
+          <p className="text-xs text-[#A38999] mb-5">
             Al guardar, se publicará automáticamente en Instagram si la integración está activa.
           </p>
           <form onSubmit={submit} className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D]">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
                 Nombre
               </label>
               <Input
                 data-testid="product-name-input"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Ej. Echeveria rosa"
-                className="rounded-lg border-[#EFE9E1]"
+                placeholder="Ej. Esmalte semi-permanente rosa"
+                className="rounded-lg border-[#F4DBD8]"
                 required
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D]">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
                 Precio (USD)
               </label>
               <Input
@@ -267,18 +267,18 @@ export default function Admin() {
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="Ej. 12.50"
-                className="rounded-lg border-[#EFE9E1]"
+                className="rounded-lg border-[#F4DBD8]"
                 required
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D]">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
                 Badge (opcional)
               </label>
               <Select value={badge} onValueChange={setBadge}>
                 <SelectTrigger
                   data-testid="product-badge-select"
-                  className="rounded-lg border-[#EFE9E1]"
+                  className="rounded-lg border-[#F4DBD8]"
                 >
                   <SelectValue placeholder="Ninguno" />
                 </SelectTrigger>
@@ -291,12 +291,12 @@ export default function Admin() {
               </Select>
             </div>
             <div className="space-y-1.5">
-              <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D]">
+              <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94]">
                 Imagen
               </label>
               <label
                 htmlFor="product-image-input"
-                className="cursor-pointer flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#EFE9E1] p-6 bg-[#FAFAFA] hover:bg-[#F7EDE2]/50 transition-colors"
+                className="cursor-pointer flex flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-[#F4DBD8] p-6 bg-[#FEF7F5] hover:bg-[#FCE4E2]/50 transition-colors"
               >
                 {preview ? (
                   <img
@@ -306,11 +306,11 @@ export default function Admin() {
                   />
                 ) : (
                   <>
-                    <Upload className="w-6 h-6 text-[#84A59D]" />
-                    <span className="text-sm text-[#3D405B]">
+                    <Upload className="w-6 h-6 text-[#D48A94]" />
+                    <span className="text-sm text-[#3D2A3A]">
                       Haz click para seleccionar
                     </span>
-                    <span className="text-xs text-[#8D99AE]">
+                    <span className="text-xs text-[#A38999]">
                       JPG, PNG, WEBP o GIF · máx 10MB
                     </span>
                   </>
@@ -330,7 +330,7 @@ export default function Admin() {
               data-testid="product-submit-button"
               type="submit"
               disabled={submitting}
-              className="w-full h-11 rounded-full bg-[#84A59D] hover:bg-[#6C8A82] text-white gap-2"
+              className="w-full h-11 rounded-full bg-[#D48A94] hover:bg-[#B37380] text-white gap-2"
             >
               {submitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
@@ -346,19 +346,19 @@ export default function Admin() {
         {/* Product list */}
         <section
           data-testid="admin-product-list"
-          className="bg-white rounded-3xl border border-[#EFE9E1] p-6"
+          className="bg-white rounded-3xl border border-[#F4DBD8] p-6"
         >
           <div className="flex items-center justify-between mb-4">
-            <h2 className="font-serif-display text-2xl text-[#3D405B]">
+            <h2 className="font-serif-display text-2xl text-[#3D2A3A]">
               Productos ({products.length})
             </h2>
           </div>
           {products.length === 0 ? (
-            <div className="py-12 text-center text-sm text-[#8D99AE]">
+            <div className="py-12 text-center text-sm text-[#A38999]">
               Todavía no has agregado productos.
             </div>
           ) : (
-            <ul className="divide-y divide-[#EFE9E1]">
+            <ul className="divide-y divide-[#F4DBD8]">
               {products.map((p) => {
                 const st = STATUS_LABELS[p.instagram_status] || STATUS_LABELS.pending;
                 return (
@@ -370,24 +370,24 @@ export default function Admin() {
                     <img
                       src={fileUrl(p.image_path)}
                       alt={p.name}
-                      className="w-16 h-16 rounded-lg object-cover bg-[#F7EDE2]"
+                      className="w-16 h-16 rounded-lg object-cover bg-[#FCE4E2]"
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <p className="font-serif-display text-lg text-[#3D405B] truncate">
+                        <p className="font-serif-display text-lg text-[#3D2A3A] truncate">
                           {p.name}
                         </p>
-                        <span className="text-[10px] font-mono text-[#8D99AE] tracking-wider">
+                        <span className="text-[10px] font-mono text-[#A38999] tracking-wider">
                           {p.code}
                         </span>
                         {p.badge && (
-                          <Badge className="bg-[#F7EDE2] text-[#3D405B] border-transparent text-[10px] uppercase tracking-wider">
+                          <Badge className="bg-[#FCE4E2] text-[#3D2A3A] border-transparent text-[10px] uppercase tracking-wider">
                             {p.badge}
                           </Badge>
                         )}
                       </div>
                       <div className="flex items-center gap-2 mt-1">
-                        <span className="text-[#84A59D] font-serif-display text-lg">
+                        <span className="text-[#D48A94] font-serif-display text-lg">
                           ${Number(p.price).toFixed(2)}
                         </span>
                         <span
@@ -403,7 +403,7 @@ export default function Admin() {
                       variant="ghost"
                       size="icon"
                       onClick={() => remove(p)}
-                      className="text-[#8D99AE] hover:text-[#F28482] hover:bg-[#F7EDE2]"
+                      className="text-[#A38999] hover:text-[#E5646A] hover:bg-[#FCE4E2]"
                     >
                       <Trash2 className="w-4 h-4" />
                     </Button>

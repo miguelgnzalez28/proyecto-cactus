@@ -9,8 +9,8 @@ body {
     font-family: 'Outfit', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: #FAFAFA;
-    color: #3D405B;
+    background: #FEF7F5;
+    color: #3D2A3A;
 }
 
 code, .font-mono {
@@ -25,25 +25,25 @@ code, .font-mono {
 
 @layer base {
     :root {
-        --background: 0 0% 98%;
-        --foreground: 232 20% 30%;
+        --background: 20 40% 98%;
+        --foreground: 328 15% 20%;
         --card: 0 0% 100%;
-        --card-foreground: 232 20% 30%;
+        --card-foreground: 328 15% 20%;
         --popover: 0 0% 100%;
-        --popover-foreground: 232 20% 30%;
-        --primary: 165 15% 58%;
+        --popover-foreground: 328 15% 20%;
+        --primary: 351 44% 68%;
         --primary-foreground: 0 0% 100%;
-        --secondary: 24 45% 92%;
-        --secondary-foreground: 232 20% 30%;
-        --muted: 0 0% 96%;
-        --muted-foreground: 232 12% 55%;
-        --accent: 4 79% 73%;
+        --secondary: 12 60% 94%;
+        --secondary-foreground: 328 15% 20%;
+        --muted: 20 30% 96%;
+        --muted-foreground: 328 8% 50%;
+        --accent: 340 62% 68%;
         --accent-foreground: 0 0% 100%;
         --destructive: 0 72% 60%;
         --destructive-foreground: 0 0% 100%;
-        --border: 0 0% 90%;
-        --input: 0 0% 90%;
-        --ring: 165 15% 58%;
+        --border: 12 40% 92%;
+        --input: 12 40% 92%;
+        --ring: 351 44% 68%;
         --radius: 0.75rem;
     }
 }
@@ -59,8 +59,8 @@ code, .font-mono {
 
 /* selection color - dusty pink */
 ::selection {
-    background: #F7C5C0;
-    color: #3D405B;
+    background: #F7CFD3;
+    color: #3D2A3A;
 }
 
 /* subtle noise/grain texture layer usage */

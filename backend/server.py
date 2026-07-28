@@ -325,7 +325,7 @@ async def create_product(
     )
     await products_col.insert_one(product.model_dump())
 
-    caption = f"🌵 {product.name}\nCódigo: {product.code}\nPrecio: ${product.price:.2f}\n\n#cactus #catalogo"
+    caption = f"✨ {product.name}\nCódigo: {product.code}\nPrecio: ${product.price:.2f}\n\n#cactus #belleza #uñas #maquillaje"
     if ig_ready and base_url:
         image_public_url = f"{base_url.rstrip('/')}/api/files/{result['path']}"
         background.add_task(publish_to_instagram, product.id, image_public_url, caption)

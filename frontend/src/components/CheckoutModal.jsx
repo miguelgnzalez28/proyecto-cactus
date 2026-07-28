@@ -34,7 +34,7 @@ export default function CheckoutModal({ open, onOpenChange, onCompleted }) {
 
   const buildMessage = () => {
     const lines = [];
-    lines.push("🌵 *Nuevo pedido - cactus*");
+    lines.push("✨ *Nuevo pedido - cactus*");
     lines.push("");
     lines.push("*Productos:*");
     items.forEach((it) => {
@@ -72,13 +72,13 @@ export default function CheckoutModal({ open, onOpenChange, onCompleted }) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         data-testid="checkout-modal"
-        className="max-w-lg p-0 bg-[#FAFAFA] border-[#EFE9E1] gap-0 max-h-[90vh] flex flex-col"
+        className="max-w-lg p-0 bg-[#FEF7F5] border-[#F4DBD8] gap-0 max-h-[90vh] flex flex-col"
       >
-        <DialogHeader className="px-6 pt-6 pb-3 border-b border-[#EFE9E1] shrink-0">
-          <DialogTitle className="font-serif-display text-3xl font-light text-[#3D405B]">
+        <DialogHeader className="px-6 pt-6 pb-3 border-b border-[#F4DBD8] shrink-0">
+          <DialogTitle className="font-serif-display text-3xl font-light text-[#3D2A3A]">
             Verifique sus productos
           </DialogTitle>
-          <DialogDescription className="text-[#8D99AE]">
+          <DialogDescription className="text-[#A38999]">
             Confirme la lista antes de enviar el pedido por WhatsApp.
           </DialogDescription>
         </DialogHeader>
@@ -88,48 +88,48 @@ export default function CheckoutModal({ open, onOpenChange, onCompleted }) {
             {items.map((it) => (
               <li
                 key={it.id}
-                className="flex items-center justify-between gap-3 rounded-xl bg-white border border-[#EFE9E1] px-4 py-3"
+                className="flex items-center justify-between gap-3 rounded-xl bg-white border border-[#F4DBD8] px-4 py-3"
                 data-testid={`verify-item-${it.code}`}
               >
                 <div className="flex-1 min-w-0">
-                  <p className="font-serif-display text-lg text-[#3D405B] truncate">
+                  <p className="font-serif-display text-lg text-[#3D2A3A] truncate">
                     {it.name}
                   </p>
-                  <p className="text-[10px] font-mono text-[#8D99AE] tracking-wider">
+                  <p className="text-[10px] font-mono text-[#A38999] tracking-wider">
                     {it.code} · x{it.qty}
                   </p>
                 </div>
-                <span className="font-serif-display text-xl text-[#84A59D] shrink-0">
+                <span className="font-serif-display text-xl text-[#D48A94] shrink-0">
                   ${(it.price * it.qty).toFixed(2)}
                 </span>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center justify-between rounded-xl bg-[#F7EDE2] px-4 py-3">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#3D405B]">Total</span>
-            <span className="font-serif-display text-2xl text-[#3D405B]">
+          <div className="flex items-center justify-between rounded-xl bg-[#FCE4E2] px-4 py-3">
+            <span className="text-xs uppercase tracking-[0.2em] text-[#3D2A3A]">Total</span>
+            <span className="font-serif-display text-2xl text-[#3D2A3A]">
               ${total.toFixed(2)}
             </span>
           </div>
 
-          <div className="rounded-xl bg-white border border-[#EFE9E1] overflow-hidden">
+          <div className="rounded-xl bg-white border border-[#F4DBD8] overflow-hidden">
             <button
               type="button"
               data-testid="toggle-delivery-button"
               onClick={() => setShowDelivery((s) => !s)}
-              className="w-full flex items-center justify-between px-4 py-3 hover:bg-[#F7EDE2]/50 transition-colors"
+              className="w-full flex items-center justify-between px-4 py-3 hover:bg-[#FCE4E2]/50 transition-colors"
             >
-              <span className="flex items-center gap-2 text-sm text-[#3D405B]">
-                <MapPin className="w-4 h-4 text-[#84A59D]" />
+              <span className="flex items-center gap-2 text-sm text-[#3D2A3A]">
+                <MapPin className="w-4 h-4 text-[#D48A94]" />
                 Agregar delivery (dirección y teléfono)
               </span>
-              <ChevronDown className={`w-4 h-4 text-[#8D99AE] transition-transform ${showDelivery ? "rotate-180" : ""}`} />
+              <ChevronDown className={`w-4 h-4 text-[#A38999] transition-transform ${showDelivery ? "rotate-180" : ""}`} />
             </button>
             {showDelivery && (
-              <div className="px-4 pb-4 pt-1 space-y-3 border-t border-[#EFE9E1]">
+              <div className="px-4 pb-4 pt-1 space-y-3 border-t border-[#F4DBD8]">
                 <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D] flex items-center gap-1">
+                  <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94] flex items-center gap-1">
                     <MapPin className="w-3 h-3" /> Dirección
                   </label>
                   <Input
@@ -137,11 +137,11 @@ export default function CheckoutModal({ open, onOpenChange, onCompleted }) {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder="Ej. Av. Bolívar 123, Caracas"
-                    className="rounded-lg border-[#EFE9E1]"
+                    className="rounded-lg border-[#F4DBD8]"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-[10px] uppercase tracking-[0.2em] text-[#84A59D] flex items-center gap-1">
+                  <label className="text-[10px] uppercase tracking-[0.2em] text-[#D48A94] flex items-center gap-1">
                     <Phone className="w-3 h-3" /> Teléfono
                   </label>
                   <Input
@@ -149,33 +149,33 @@ export default function CheckoutModal({ open, onOpenChange, onCompleted }) {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="Ej. +58 414 1234567"
-                    className="rounded-lg border-[#EFE9E1]"
+                    className="rounded-lg border-[#F4DBD8]"
                   />
                 </div>
               </div>
             )}
           </div>
 
-          <label className="flex items-start gap-3 rounded-xl bg-white border border-[#EFE9E1] px-4 py-3 cursor-pointer">
+          <label className="flex items-start gap-3 rounded-xl bg-white border border-[#F4DBD8] px-4 py-3 cursor-pointer">
             <input
               type="checkbox"
               data-testid="verify-confirm-checkbox"
               checked={confirmed}
               onChange={(e) => setConfirmed(e.target.checked)}
-              className="mt-1 h-4 w-4 accent-[#84A59D]"
+              className="mt-1 h-4 w-4 accent-[#D48A94]"
             />
-            <span className="text-sm text-[#3D405B]">
-              <CheckCircle2 className="inline w-4 h-4 mr-1 text-[#84A59D]" />
+            <span className="text-sm text-[#3D2A3A]">
+              <CheckCircle2 className="inline w-4 h-4 mr-1 text-[#D48A94]" />
               Confirmo que la lista de productos es correcta.
             </span>
           </label>
         </div>
 
-        <div className="border-t border-[#EFE9E1] px-6 py-4 flex gap-2 bg-white shrink-0">
+        <div className="border-t border-[#F4DBD8] px-6 py-4 flex gap-2 bg-white shrink-0">
           <Button
             variant="outline"
             onClick={() => onOpenChange(false)}
-            className="rounded-full border-[#EFE9E1]"
+            className="rounded-full border-[#F4DBD8]"
             data-testid="checkout-cancel-button"
           >
             Cancelar

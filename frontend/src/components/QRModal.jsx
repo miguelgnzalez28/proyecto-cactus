@@ -28,30 +28,30 @@ export default function QRModal({ open, onOpenChange }) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent data-testid="qr-modal" className="max-w-sm bg-white border-[#EFE9E1]">
+      <DialogContent data-testid="qr-modal" className="max-w-sm bg-white border-[#F4DBD8]">
         <DialogHeader>
-          <DialogTitle className="font-serif-display text-2xl text-[#3D405B]">
+          <DialogTitle className="font-serif-display text-2xl text-[#3D2A3A]">
             Compartir tienda
           </DialogTitle>
-          <DialogDescription className="text-[#8D99AE]">
+          <DialogDescription className="text-[#A38999]">
             Escanea el código QR para abrir el catálogo cactus.
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col items-center gap-4 py-2">
-          <div className="p-4 bg-[#F7EDE2] rounded-2xl">
+          <div className="p-4 bg-[#FCE4E2] rounded-2xl">
             <QRCodeCanvas
               id="cactus-qr-canvas"
               value={url}
               size={220}
-              bgColor="#F7EDE2"
-              fgColor="#3D405B"
+              bgColor="#FCE4E2"
+              fgColor="#3D2A3A"
               level="H"
             />
           </div>
           <p
             data-testid="qr-url-text"
-            className="text-xs font-mono text-[#8D99AE] break-all text-center max-w-full"
+            className="text-xs font-mono text-[#A38999] break-all text-center max-w-full"
           >
             {url}
           </p>
@@ -62,14 +62,14 @@ export default function QRModal({ open, onOpenChange }) {
             data-testid="qr-copy-button"
             variant="outline"
             onClick={copy}
-            className="flex-1 rounded-full border-[#EFE9E1] gap-2"
+            className="flex-1 rounded-full border-[#F4DBD8] gap-2"
           >
             <Copy className="w-4 h-4" /> Copiar link
           </Button>
           <Button
             data-testid="qr-download-button"
             onClick={download}
-            className="flex-1 rounded-full bg-[#3D405B] hover:bg-[#2E3149] text-white gap-2"
+            className="flex-1 rounded-full bg-[#3D2A3A] hover:bg-[#2C1F2A] text-white gap-2"
           >
             <Download className="w-4 h-4" /> Descargar
           </Button>

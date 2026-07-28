@@ -21,7 +21,7 @@ function App() {
         toastOptions={{
           style: {
             borderRadius: "9999px",
-            border: "1px solid #EFE9E1",
+            border: "1px solid #F4DBD8",
           },
         }}
       />
