@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Header from "../components/Header";
 import ProductCard from "../components/ProductCard";
+import ProductShowcase from "../components/ProductShowcase";
 import {
   Select,
   SelectTrigger,
@@ -52,36 +53,17 @@ export default function Catalog() {
     <div className="min-h-screen bg-[#FEF7F5]">
       <Header search={search} setSearch={setSearch} />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden" data-testid="hero-section">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#FCE4E2] via-[#FEF7F5] to-[#FEF7F5]" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-20 pb-10">
-          <div className="grid md:grid-cols-[1.4fr,1fr] gap-8 items-end">
-            <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-[#D48A94]">
-                <Sparkles className="w-3 h-3" /> Nueva colección
-              </span>
-              <h1 className="font-serif-display text-5xl sm:text-6xl lg:text-7xl font-light text-[#3D2A3A] leading-[1.02]">
-                Uñas, maquillaje <br />
-                <em className="not-italic text-[#D48A94]">y un toque de brillo.</em>
-              </h1>
-              <p className="text-[#4A3542] text-base max-w-lg leading-relaxed">
-                Variedades pensadas para realzar tu belleza: esmaltes, cosméticos, herramientas de manicura y accesorios. Elige tus favoritos, arma tu carrito y recibe todo en la puerta de tu casa.
-              </p>
-            </div>
-            <div className="hidden md:block">
-              <img
-                src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?crop=entropy&cs=srgb&fm=jpg&w=800&q=80"
-                alt="beauty"
-                className="w-full aspect-[4/5] object-cover rounded-3xl"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Product showcase carousel */}
+      <ProductShowcase products={products} />
 
       {/* Filters */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 pt-8">
+        <div className="flex items-baseline justify-between gap-4 mb-6">
+          <div>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#D48A94]">Catálogo</span>
+            <h2 className="font-serif-display text-3xl sm:text-4xl text-[#3D2A3A]">Explora toda la colección</h2>
+          </div>
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-[#D48A94]">
             <Filter className="w-3 h-3" /> Filtrar
@@ -160,7 +142,7 @@ export default function Catalog() {
 
       <footer className="border-t border-[#F4DBD8] bg-white/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-wrap items-center justify-between gap-4">
-          <span className="font-serif-display text-2xl text-[#3D2A3A]">cactus</span>
+          <img src="/assets/logo.png" alt="cactus" className="h-8 w-auto object-contain" />
           <p className="text-xs text-[#A38999]">
             Belleza para lucir cada día · {new Date().getFullYear()}
           </p>

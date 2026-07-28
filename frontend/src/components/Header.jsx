@@ -17,13 +17,12 @@ export default function Header({ search, setSearch }) {
       data-testid="site-header"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
-        <a href="/" className="flex items-baseline gap-2 shrink-0" data-testid="brand-logo">
-          <span className="font-serif-display text-3xl sm:text-4xl text-[#3D2A3A] leading-none">
-            cactus
-          </span>
-          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.3em] text-[#D48A94]">
-            belleza
-          </span>
+        <a href="/" className="flex items-center gap-1 shrink-0" data-testid="brand-logo">
+          <img
+            src="/assets/logo.png"
+            alt="cactus"
+            className="h-11 sm:h-14 w-auto object-contain"
+          />
         </a>
 
         <div className="flex-1 max-w-xl mx-auto relative">

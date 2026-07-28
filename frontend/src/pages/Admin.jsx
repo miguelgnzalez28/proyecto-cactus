@@ -152,10 +152,7 @@ export default function Admin() {
       <div className="min-h-screen bg-[#FEF7F5] flex items-center justify-center px-4">
         <div className="w-full max-w-md bg-white rounded-3xl border border-[#F4DBD8] p-8 shadow-[0_20px_60px_-20px_rgba(61,64,91,0.15)]">
           <div className="flex flex-col items-center gap-2 mb-6">
-            <div className="w-12 h-12 rounded-full bg-[#FCE4E2] flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-[#D48A94]" />
-            </div>
-            <h1 className="font-serif-display text-3xl text-[#3D2A3A]">Admin cactus</h1>
+            <img src="/assets/logo.png" alt="cactus" className="h-16 w-auto object-contain" />
             <p className="text-xs text-[#A38999] uppercase tracking-[0.2em]">
               Solo administradores
             </p>
@@ -208,8 +205,8 @@ export default function Admin() {
     <div className="min-h-screen bg-[#FEF7F5]">
       <header className="border-b border-[#F4DBD8] bg-white/80 backdrop-blur sticky top-0 z-30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <div className="flex items-baseline gap-3">
-            <span className="font-serif-display text-3xl text-[#3D2A3A]">cactus</span>
+          <div className="flex items-center gap-2">
+            <img src="/assets/logo.png" alt="cactus" className="h-10 w-auto object-contain" />
             <span className="text-[10px] uppercase tracking-[0.3em] text-[#D48A94]">admin</span>
           </div>
           <div className="flex items-center gap-3">
