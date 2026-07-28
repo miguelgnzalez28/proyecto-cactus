@@ -5,6 +5,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
 } from "../components/ui/sheet";
 import { Button } from "../components/ui/button";
 import { useCart } from "../context/CartContext";
@@ -26,9 +27,9 @@ export default function CartDrawer({ open, onOpenChange }) {
           <SheetTitle className="font-serif-display text-2xl text-[#3D405B]">
             Tu carrito
           </SheetTitle>
-          <p className="text-xs uppercase tracking-[0.2em] text-[#84A59D]">
+          <SheetDescription className="text-xs uppercase tracking-[0.2em] text-[#84A59D]">
             {count} {count === 1 ? "producto" : "productos"}
-          </p>
+          </SheetDescription>
         </SheetHeader>
 
         <div className="flex-1 overflow-y-auto px-6 py-4">

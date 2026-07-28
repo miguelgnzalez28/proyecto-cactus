@@ -22,7 +22,10 @@ from fastapi import (
     Header,
     Response,
     Query,
+    Request,
 )
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from dotenv import load_dotenv
@@ -308,24 +311,24 @@ async def create_product(
     path = f"{APP_NAME}/products/{uuid.uuid4()}.{ext}"
     result = put_object(path, data, image.content_type)
 
+    ig_ready = bool(INSTAGRAM_USER_ID and META_ACCESS_TOKEN)
+    base_url = os.environ.get("PUBLIC_BASE_URL") or ""
+    initial_status = "pending" if (ig_ready and base_url) else "skipped"
+
     product = Product(
         code=gen_code(),
         name=name,
         price=price,
         image_path=result["path"],
         badge=badge,
+        instagram_status=initial_status,
     )
     await products_col.insert_one(product.model_dump())
 
-    # public URL for Instagram
-    base_url = os.environ.get("PUBLIC_BASE_URL") or ""
     caption = f"🌵 {product.name}\nCódigo: {product.code}\nPrecio: ${product.price:.2f}\n\n#cactus #catalogo"
-    if base_url:
+    if ig_ready and base_url:
         image_public_url = f"{base_url.rstrip('/')}/api/files/{result['path']}"
         background.add_task(publish_to_instagram, product.id, image_public_url, caption)
-    else:
-        # try to derive from request later, mark skipped
-        _sync_update_product(product.id, {"instagram_status": "skipped"})
 
     return product.model_dump()
 
@@ -346,6 +349,20 @@ async def download_file(path: str):
 
 
 # ---------------------- app assembly ----------------------
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    """Normalise missing required form/body fields to a 400 response."""
+    errors = exc.errors()
+    if request.url.path == "/api/products" and request.method == "POST":
+        missing = [".".join(str(x) for x in e["loc"][1:]) for e in errors if e.get("type") == "missing"]
+        if missing:
+            return JSONResponse(
+                status_code=400,
+                content={"detail": f"Campos requeridos faltantes: {', '.join(missing)}"},
+            )
+    return JSONResponse(status_code=422, content={"detail": errors})
+
+
 app.include_router(api)
 
 app.add_middleware(
