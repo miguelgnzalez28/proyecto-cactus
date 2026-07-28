@@ -1,0 +1,79 @@
+{
+  "theme": "light",
+  "typography": {
+    "fonts": {
+      "heading": "Cormorant Garamond, serif",
+      "body": "Outfit, sans-serif",
+      "mono": "Space Mono, monospace"
+    },
+    "hierarchy": {
+      "h1": "text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-[#3D405B]",
+      "h2": "text-2xl sm:text-3xl lg:text-4xl font-light text-[#3D405B]",
+      "h3": "text-xl sm:text-2xl font-normal text-[#3D405B]",
+      "price": "text-3xl sm:text-4xl font-light tracking-tight text-[#84A59D]",
+      "body": "text-base font-light text-[#4A4E69]",
+      "label": "text-xs font-medium uppercase tracking-[0.2em] text-[#84A59D]"
+    },
+    "guidelines": "Use Cormorant Garamond for elegant, botanical-feeling headers. Use Outfit for highly legible body text. The product price should be very prominent and large."
+  },
+  "colors": {
+    "palette": {
+      "background": "#FAFAFA",
+      "surface": "#FFFFFF",
+      "surface_alt": "#F7EDE2",
+      "primary": "#84A59D",
+      "primary_hover": "#6C8A82",
+      "accent": "#F28482",
+      "accent_hover": "#E07472",
+      "text_main": "#3D405B",
+      "text_muted": "#8D99AE",
+      "border": "#E5E5E5"
+    },
+    "badges": {
+      "nuevo": "bg-[#84A59D] text-white",
+      "oferta": "bg-[#F28482] text-white",
+      "agotado": "bg-[#8D99AE] text-white"
+    },
+    "guidelines": "Pastel, organic, warm palette. NEVER use purple/violet gradients. Rely on sage greens, dusty pinks, creams, and sands. Use dark charcoal for text instead of pure black. Ensure 4.5:1 contrast for all text."
+  },
+  "layouts_and_spacing": {
+    "spacing_scale": "Generous spacing. Use p-6, p-8, and p-12 for containers. gap-8 for product grids.",
+    "grid": {
+      "products": "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
+    },
+    "containers": "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+  },
+  "components": {
+    "navbar": "Glassmorphism header (backdrop-blur-xl bg-white/70), sticky top-0, z-50. Must include brand name 'cactus' in serif font, search input, share QR button, and cart icon with item count badge.",
+    "product_card": "Minimalist. No border by default. rounded-2xl overflow-hidden. Image takes top 60-70%. Content below with left alignment. Prominent large price. Add to cart button appearing or highlighted on hover. Badges overlapping image top-left.",
+    "cart_drawer": "Slide-in from right. Contains selected products with small thumb, name, price, and remove button. Fixed bottom section with total and 'Checkout' button.",
+    "verification_modal": "A clean Dialog (modal) titled 'Verifique sus productos'. Shows list of items (name, code, price). Contains a form section for Delivery (Address and Phone number). A primary button 'Enviar por WhatsApp' that triggers the predefined message.",
+    "qr_modal": "Simple modal displaying a QR code that points to the current URL. Accessible via 'Compartir' button in header.",
+    "admin_panel": "Located exclusively at '/admin'. Needs a simple login form (admin/admin123). Once authenticated, shows a table of products and a form to add new ones (Name, Price, Image URL, Badge). Includes a mock or structural logic for 'Upload to Instagram' on submission.",
+    "buttons": "Pill-shaped (rounded-full) or softly rounded (rounded-xl). Transition on hover: -translate-y-0.5 shadow-md."
+  },
+  "motion_and_interactions": {
+    "hover_states": "Product cards: subtle lift (-translate-y-1) and ambient shadow (shadow-lg). Buttons: color darken and slight lift.",
+    "page_load": "Staggered fade-up for product grid items (use framer-motion).",
+    "modals_drawers": "Smooth slide/fade entrances using framer-motion or Radix UI animations."
+  },
+  "media_and_images": {
+    "hero_background": "https://images.unsplash.com/photo-1610391437424-a78a33ee5716?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwZGVzZXJ0fGVufDB8fHx8MTc4NTI3MzkxMnww&ixlib=rb-4.1.0&q=85",
+    "products": [
+      "https://images.unsplash.com/photo-1509937528035-ad76254b0356?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHw0fHxwb3R0ZWQlMjBjYWN0dXN8ZW58MHx8fHwxNzg1MjczOTA3fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwxfHxwb3R0ZWQlMjBjYWN0dXN8ZW58MHx8fHwxNzg1MjczOTA3fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1519336056116-bc0f1771dec8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwyfHxwb3R0ZWQlMjBjYWN0dXN8ZW58MHx8fHwxNzg1MjczOTA3fDA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzl8MHwxfHNlYXJjaHwzfHxwb3R0ZWQlMjBjYWN0dXN8ZW58MHx8fHwxNzg1MjczOTA3fDA&ixlib=rb-4.1.0&q=85"
+    ],
+    "guidelines": "Use these images for mocking the product catalog. The aesthetic is potted cactus and botanical minimalist."
+  },
+  "testing_and_accessibility": {
+    "data_testid": "ALL interactive elements and key informational areas MUST have a `data-testid` attribute (kebab-case, role-based). Examples: `product-card-button`, `cart-drawer-toggle`, `checkout-whatsapp-button`, `admin-login-submit`.",
+    "contrast": "Ensure text meets APCA/WCAG standards. DO NOT use fully transparent backgrounds for components overlaid on images; use blur or semi-solid colors."
+  },
+  "instructions_to_main_agent": {
+    "tech_stack": "React (using .js extensions, NO .tsx), Tailwind CSS, Shadcn UI primitives, Framer Motion, Lucide React.",
+    "general": "Do not center align the app container text by default. Create depth with z-index and shadows. Implement toast notifications via Sonner. Ensure the auto-generated code is visible on the product card. When 'Enviar por WhatsApp' is clicked, generate a wa.me link with URL-encoded text containing product codes, names, total price, and the user's delivery info. Mock the Instagram upload feature with a toast notification.",
+    "admin_protection": "Ensure the /admin route is protected by a simple state-based login (admin/admin123)."
+  }
+}
