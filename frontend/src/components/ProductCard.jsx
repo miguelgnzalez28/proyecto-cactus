@@ -65,16 +65,16 @@ export default function ProductCard({ product, index = 0 }) {
         </span>
       </div>
 
-      <div className="p-5 flex flex-col gap-3">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="font-serif-display text-xl sm:text-2xl text-[#3D2A3A] leading-tight">
+      <div className="p-3 sm:p-5 flex flex-col gap-2 sm:gap-3">
+        <div className="flex items-start justify-between gap-2 sm:gap-3">
+          <h3 className="font-serif-display text-base sm:text-2xl text-[#3D2A3A] leading-tight line-clamp-2">
             {product.name}
           </h3>
         </div>
-        <div className="flex items-end justify-between gap-3">
+        <div className="flex items-end justify-between gap-2">
           <span
             data-testid={`product-price-${product.code}`}
-            className="font-serif-display text-3xl sm:text-4xl font-light tracking-tight text-[#D48A94]"
+            className="font-serif-display text-2xl sm:text-4xl font-light tracking-tight text-[#D48A94]"
           >
             ${Number(product.price).toFixed(2)}
           </span>
@@ -82,10 +82,10 @@ export default function ProductCard({ product, index = 0 }) {
             data-testid={`add-to-cart-${product.code}`}
             onClick={handleAdd}
             disabled={isSoldOut}
-            className="rounded-full h-10 px-4 bg-[#3D2A3A] text-white hover:bg-[#2C1F2A] disabled:opacity-40"
+            className="rounded-full h-9 sm:h-10 px-3 sm:px-4 bg-[#3D2A3A] text-white hover:bg-[#2C1F2A] disabled:opacity-40 shrink-0"
           >
             <Plus className="w-4 h-4" />
-            <span className="text-xs">Agregar</span>
+            <span className="hidden sm:inline text-xs">Agregar</span>
           </Button>
         </div>
       </div>

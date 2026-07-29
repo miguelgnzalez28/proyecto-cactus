@@ -57,11 +57,11 @@ export default function Catalog() {
       <ProductShowcase products={products} />
 
       {/* Filters */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-6 pt-8">
-        <div className="flex items-baseline justify-between gap-4 mb-6">
+      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pb-6 pt-6 sm:pt-8">
+        <div className="flex items-baseline justify-between gap-4 mb-5 sm:mb-6">
           <div>
             <span className="text-[10px] uppercase tracking-[0.3em] text-[#D48A94]">Catálogo</span>
-            <h2 className="font-serif-display text-3xl sm:text-4xl text-[#3D2A3A]">Explora toda la colección</h2>
+            <h2 className="font-serif-display text-2xl sm:text-4xl text-[#3D2A3A]">Explora toda la colección</h2>
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
@@ -106,7 +106,7 @@ export default function Catalog() {
       </section>
 
       {/* Product grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pb-16 sm:pb-24">
         {loading ? (
           <div
             data-testid="loading-state"
@@ -131,7 +131,7 @@ export default function Catalog() {
         ) : (
           <div
             data-testid="products-grid"
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
+            className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8"
           >
             {filtered.map((p, i) => (
               <ProductCard key={p.id} product={p} index={i} />

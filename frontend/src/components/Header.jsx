@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ShoppingBag, Search, Share2, ArrowRight } from "lucide-react";
+import { ShoppingBag, Search, Share2 } from "lucide-react";
 import { Input } from "../components/ui/input";
 import { Button } from "../components/ui/button";
 import { useCart } from "../context/CartContext";
@@ -16,16 +16,47 @@ export default function Header({ search, setSearch }) {
       className="sticky top-0 z-40 w-full backdrop-blur-xl bg-white/70 border-b border-[#F4DBD8]"
       data-testid="site-header"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
-        <a href="/" className="flex items-center gap-1 shrink-0" data-testid="brand-logo">
-          <img
-            src="/assets/logo.png"
-            alt="cactus"
-            className="h-11 sm:h-14 w-auto object-contain"
-          />
-        </a>
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+        {/* row 1: logo + actions */}
+        <div className="flex items-center justify-between gap-2 w-full sm:w-auto">
+          <a href="/" className="flex items-center gap-1 shrink-0" data-testid="brand-logo">
+            <img
+              src="/assets/logo.png"
+              alt="cactus"
+              className="h-9 sm:h-14 w-auto object-contain"
+            />
+          </a>
+          <div className="flex items-center gap-1.5 sm:hidden">
+            <Button
+              data-testid="share-qr-button-mobile"
+              variant="ghost"
+              size="icon"
+              onClick={() => setQrOpen(true)}
+              className="rounded-full h-10 w-10 text-[#3D2A3A] hover:bg-[#FCE4E2]"
+              aria-label="Compartir tienda"
+            >
+              <Share2 className="w-5 h-5" />
+            </Button>
+            <Button
+              data-testid="cart-drawer-toggle-mobile"
+              onClick={() => setCartOpen(true)}
+              className="relative rounded-full h-10 pl-3 pr-4 bg-[#3D2A3A] hover:bg-[#2C1F2A] text-white gap-1.5"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              {count > 0 && (
+                <span
+                  data-testid="cart-count-badge-mobile"
+                  className="min-w-[20px] h-[20px] px-1.5 rounded-full bg-[#E5646A] text-white text-[11px] font-medium flex items-center justify-center"
+                >
+                  {count}
+                </span>
+              )}
+            </Button>
+          </div>
+        </div>
 
-        <div className="flex-1 max-w-xl mx-auto relative">
+        {/* search bar (row 2 on mobile, center on desktop) */}
+        <div className="flex-1 max-w-xl sm:mx-auto relative w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#A38999] w-4 h-4" />
           <Input
             data-testid="search-input"
@@ -33,38 +64,40 @@ export default function Header({ search, setSearch }) {
             placeholder="Buscar por nombre o código…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-9 h-11 rounded-full border-[#F4DBD8] bg-white/80 focus-visible:ring-[#D48A94]"
+            className="pl-9 h-10 sm:h-11 rounded-full border-[#F4DBD8] bg-white/80 focus-visible:ring-[#D48A94]"
           />
         </div>
 
-        <Button
-          data-testid="share-qr-button"
-          variant="ghost"
-          size="icon"
-          onClick={() => setQrOpen(true)}
-          className="rounded-full h-11 w-11 text-[#3D2A3A] hover:bg-[#FCE4E2]"
-          aria-label="Compartir tienda"
-        >
-          <Share2 className="w-5 h-5" />
-        </Button>
+        {/* desktop-only right actions */}
+        <div className="hidden sm:flex items-center gap-2">
+          <Button
+            data-testid="share-qr-button"
+            variant="ghost"
+            size="icon"
+            onClick={() => setQrOpen(true)}
+            className="rounded-full h-11 w-11 text-[#3D2A3A] hover:bg-[#FCE4E2]"
+            aria-label="Compartir tienda"
+          >
+            <Share2 className="w-5 h-5" />
+          </Button>
 
-        <Button
-          data-testid="cart-drawer-toggle"
-          onClick={() => setCartOpen(true)}
-          className="relative rounded-full h-11 pl-4 pr-5 bg-[#3D2A3A] hover:bg-[#2C1F2A] text-white gap-2"
-        >
-          <ShoppingBag className="w-4 h-4" />
-          <span className="hidden sm:inline text-sm">Carrito</span>
-          {count > 0 && (
-            <span
-              data-testid="cart-count-badge"
-              className="ml-1 min-w-[22px] h-[22px] px-1.5 rounded-full bg-[#E5646A] text-white text-xs font-medium flex items-center justify-center"
-            >
-              {count}
-            </span>
-          )}
-          <ArrowRight className="w-4 h-4 opacity-70 hidden sm:inline-block" />
-        </Button>
+          <Button
+            data-testid="cart-drawer-toggle"
+            onClick={() => setCartOpen(true)}
+            className="relative rounded-full h-11 pl-4 pr-5 bg-[#3D2A3A] hover:bg-[#2C1F2A] text-white gap-2"
+          >
+            <ShoppingBag className="w-4 h-4" />
+            <span className="text-sm">Carrito</span>
+            {count > 0 && (
+              <span
+                data-testid="cart-count-badge"
+                className="ml-1 min-w-[22px] h-[22px] px-1.5 rounded-full bg-[#E5646A] text-white text-xs font-medium flex items-center justify-center"
+              >
+                {count}
+              </span>
+            )}
+          </Button>
+        </div>
       </div>
       <CartDrawer open={cartOpen} onOpenChange={setCartOpen} />
       <QRModal open={qrOpen} onOpenChange={setQrOpen} />
